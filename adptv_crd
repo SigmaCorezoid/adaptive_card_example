@@ -1,0 +1,334 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Emergency Employee Status Report",
+            "wrap": true,
+            "size": "Large",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Hi, George. When you submit this form, the owner will see your name and email address.",
+            "wrap": true,
+            "height": "stretch",
+            "spacing": "Medium"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "Working",
+                    "value": "Working"
+                },
+                {
+                    "title": "In Transit",
+                    "value": "In Transit"
+                },
+                {
+                    "title": "Stand By",
+                    "value": "Stand By"
+                },
+                {
+                    "title": "Blocked",
+                    "value": "Blocked"
+                },
+                {
+                    "title": "Ready To Work",
+                    "value": "Ready To Work"
+                },
+                {
+                    "title": "On Vacation",
+                    "value": "On Vacation"
+                },
+                {
+                    "title": "Sick",
+                    "value": "Sick"
+                },
+                {
+                    "title": "Mobilized",
+                    "value": "Mobilized"
+                }
+            ],
+            "style": "expanded",
+            "isRequired": true,
+            "errorMessage": "Це поле обов'язкове",
+            "id": "status",
+            "label": "Який твій поточний статус?",
+            "spacing": "Medium",
+            "$when": "${$root.id == 'status'}"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "Лишатись на місці",
+                    "value": "Лишатись на місці"
+                },
+                {
+                    "title": "Релокуватись самостійно до іншої локації",
+                    "value": "Релокуватись самостійно до іншої локації"
+                },
+                {
+                    "title": "Релокуватись, якщо буде централізований транспорт",
+                    "value": "Релокуватись, якщо буде централізований транспорт"
+                },
+                {
+                    "title": "Не визначився",
+                    "value": "Не визначився"
+                }
+            ],
+            "id": "yourAction",
+            "label": "Який твій наступний крок у випадку розвитку ситуації?",
+            "spacing": "Large",
+            "isRequired": true,
+            "errorMessage": "Це поле обов'язкове",
+            "value": "Лишатись на місці"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Куди ти плануєш релокуватись?",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "choices": [
+                {
+                    "title": "Вінниця",
+                    "value": "Вінниця"
+                },
+                {
+                    "title": "Дніпро",
+                    "value": "Дніпро"
+                },
+                {
+                    "title": "Івано-Франківськ",
+                    "value": "Івано-Франківськ"
+                },
+                {
+                    "title": "Київ",
+                    "value": "Київ"
+                },
+                {
+                    "title": "Львів",
+                    "value": "Львів"
+                },
+                {
+                    "title": "Одеса",
+                    "value": "Одеса"
+                },
+                {
+                    "title": "Рівне",
+                    "value": "Рівне"
+                },
+                {
+                    "title": "Суми",
+                    "value": "Суми"
+                },
+                {
+                    "title": "Ужгород",
+                    "value": "Ужгород"
+                },
+                {
+                    "title": "Харків",
+                    "value": "Харків"
+                },
+                {
+                    "title": "Не планую",
+                    "value": "Не планую"
+                }
+            ],
+            "id": "whereToLocate",
+            "label": "Для України - назва міста, для інших країн - назва країни, міста.  Наприклад: Херсон Польша Польша, Гданськ",
+            "spacing": "Small",
+            "wrap": true,
+            "value": "Не планую",
+            "isRequired": true,
+            "errorMessage": "Це поле обов'язкове"
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "Вкажи 0, якщо релокуватись будеш лише ти один",
+            "label": "Скільки додаткових членів родини ти плануєшь брати з собою?",
+            "spacing": "Medium",
+            "isRequired": true,
+            "errorMessage": "Це поле обов'язкове",
+            "id": "familyCount"
+        },
+        {
+            "type": "Input.Text",
+            "spacing": "Medium",
+            "label": "Додаткова інформація",
+            "id": "additionalInfo",
+            "isMultiline": true
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "E-mail",
+            "label": "Якщо ти з дозволенного списку і заповнив форму за іншу людину, вкажи її e-mail УВАГА! Це поле тільки для BCP команди!  Всі інші - не заповнюйте це поле, якщо ви це зробите, ваша анкета буде проігнорована!!!!!",
+            "spacing": "Medium",
+            "style": "Email",
+            "id": "bcpEmail"
+        },
+        {
+            "type": "TextBlock",
+            "text": "В якій області ти зараз знаходишся?",
+            "size": "Default",
+            "wrap": true,
+            "spacing": "Large"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "Input.Text",
+                        "id": "nUcountry",
+                        "label": "Введіть назву країни",
+                        "isRequired": true,
+                        "errorMessage": "Це поле обов'язкове"
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "nUcity",
+                        "label": "В якому місті ти знаходишься?",
+                        "isRequired": true,
+                        "errorMessage": "Це поле обов'язкове"
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            },
+            "title": "Не в Україні"
+        },
+        {
+            "type": "Action.ShowCard",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "Input.ChoiceSet",
+                        "choices": [
+                            {
+                                "title": "Вінницька",
+                                "value": "Вінницька"
+                            },
+                            {
+                                "title": "Волинська",
+                                "value": "Волинська"
+                            },
+                            {
+                                "title": "Дніпропетровська",
+                                "value": "Дніпропетровська"
+                            },
+                            {
+                                "title": "Донецька",
+                                "value": "Донецька"
+                            },
+                            {
+                                "title": "Житомирська",
+                                "value": "Житомирська"
+                            },
+                            {
+                                "title": "Закарпатська",
+                                "value": "Закарпатська"
+                            },
+                            {
+                                "title": "Запорізька",
+                                "value": "Запорізька"
+                            },
+                            {
+                                "title": "Івано-Франківська",
+                                "value": "Івано-Франківська"
+                            },
+                            {
+                                "title": "Київська",
+                                "value": "Київська"
+                            },
+                            {
+                                "title": "Кіровоградська",
+                                "value": "Кіровоградська"
+                            },
+                            {
+                                "title": "Луганська",
+                                "value": "Луганська"
+                            },
+                            {
+                                "title": "Львівська",
+                                "value": "Львівська"
+                            },
+                            {
+                                "title": "Миколаївська",
+                                "value": "Миколаївська"
+                            },
+                            {
+                                "title": "Одеська",
+                                "value": "Одеська"
+                            },
+                            {
+                                "title": "Полтавська",
+                                "value": "Полтавська"
+                            },
+                            {
+                                "title": "Рівненська",
+                                "value": "Рівненська"
+                            },
+                            {
+                                "title": "Сумська",
+                                "value": "Сумська"
+                            },
+                            {
+                                "title": "Тернопільська",
+                                "value": "Тернопільська"
+                            },
+                            {
+                                "title": "Харківська",
+                                "value": "Харківська"
+                            },
+                            {
+                                "title": "Херсонська",
+                                "value": "Херсонська"
+                            },
+                            {
+                                "title": "Хмельницька",
+                                "value": "Хмельницька"
+                            },
+                            {
+                                "title": "Черкаська",
+                                "value": "Черкаська"
+                            },
+                            {
+                                "title": "Чернівецька",
+                                "value": "Чернівецька"
+                            },
+                            {
+                                "title": "Чернігівська ",
+                                "value": "Чернігівська "
+                            }
+                        ],
+                        "value": "Вінницька",
+                        "id": "uState",
+                        "label": "Оберіть область",
+                        "isRequired": true,
+                        "errorMessage": "Це поле обов'язкове"
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "uCity",
+                        "label": "В якому місті ти знаходишся?",
+                        "isRequired": true,
+                        "errorMessage": "Це поле обов'язкове"
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            },
+            "title": "В Україні"
+        }
+    ]
+}
